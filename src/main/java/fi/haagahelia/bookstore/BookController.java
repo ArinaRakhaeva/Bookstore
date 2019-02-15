@@ -18,6 +18,9 @@ public class BookController {
 	@Autowired
 	private BookRepository repository;
 	
+	@Autowired
+	private CategoryRepository crepository;
+	
 	 @RequestMapping(value="/booklist")
 	    public String bookList(Model model) {	
 	        model.addAttribute("book", repository.findAll());
@@ -27,6 +30,7 @@ public class BookController {
 	@RequestMapping(value = "/add")
     public String addbook(Model model){
     	model.addAttribute("book", new Book());
+        model.addAttribute("category", crepository.findAll());
         return "addbook";
     }     
 	 @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -43,7 +47,7 @@ public class BookController {
 	    @RequestMapping(value = "/edit/{id}")
 	    public String addStudent(@PathVariable("id") Long Id, Model model){
 	    model.addAttribute("book", repository.findById(Id));
-//	    model.addAttribute("departments", drepository.findAll());
+        model.addAttribute("category", crepository.findAll());
 	    return "editbook";
 	    }
 }

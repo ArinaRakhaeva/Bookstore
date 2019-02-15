@@ -16,11 +16,15 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner demo(BookRepository repository) {
-		return (args)-> {
-		
-			repository.save(new Book("Три мушкетера","Дюма",1919,234667,34));
-			repository.save(new Book("Маленький принц","Экзюпери",1987,233667,15));
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository crepository) {
+		return (args) -> {
+			
+			crepository.save(new Category("Художественная"));
+			crepository.save(new Category("Право"));
+			crepository.save(new Category("IT"));
+			
+			repository.save(new Book("Три мушкетера","Дюма",1919,234667,34, crepository.findByName("IT").get(0)));
+			repository.save(new Book("Маленький принц","Экзюпери",1987,233667,15, crepository.findByName("Право").get(0)));
     	
 		};
 	}
