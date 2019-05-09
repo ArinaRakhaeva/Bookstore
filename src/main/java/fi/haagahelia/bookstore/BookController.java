@@ -24,6 +24,11 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository;
 	
+	@RequestMapping("/")
+    public @ResponseBody String greeting() {
+        return "Hello World";
+    }
+	
 	// Show all students
     @RequestMapping(value="/login")
     public String login() {	

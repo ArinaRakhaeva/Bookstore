@@ -28,12 +28,12 @@ public class BookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
 			log.info("save a couple of books");
-			crepository.save(new Category("Художественная"));
-			crepository.save(new Category("Право"));
+			crepository.save(new Category("Drama"));
+			crepository.save(new Category("Law"));
 			crepository.save(new Category("IT"));
 			
-			repository.save(new Book("Три мушкетера","Дюма",1919,234667,34, crepository.findByName("IT").get(0)));
-			repository.save(new Book("Маленький принц","Экзюпери",1987,233667,15, crepository.findByName("Право").get(0)));
+			repository.save(new Book("Handmade's Tales","Duma",1919,234667,34, crepository.findByName("IT").get(0)));
+			repository.save(new Book("A little prince","Eczuperi",1987,233667,15, crepository.findByName("Law").get(0)));
 			
 			// Create users: admin/admin user/user
 			User user1 = new User("user", "$2a$10$XIjxGLDIw3gIT2jBviGB0.FIUwpbvQKU.g5wXAkPTkA/QjZS6zlpq", "USER");

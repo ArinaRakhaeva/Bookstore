@@ -63,6 +63,7 @@ public class UserController {
     		return "signup";
     	}
     	return "redirect:/login";    	
-    }    
+    } 
     
 }
+    
